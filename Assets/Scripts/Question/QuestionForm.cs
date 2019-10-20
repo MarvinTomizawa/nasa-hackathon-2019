@@ -27,7 +27,6 @@ public class QuestionForm : MonoBehaviour
 
     public void StartQuestion(Question question)
     {
-        Debug.LogError("Oi");
         player.StopMovement();
         form.SetActive(true);
 
@@ -56,9 +55,6 @@ public class QuestionForm : MonoBehaviour
                 planetCaracteristics.MissQuestion();
             }
 
-            Debug.Log(index);
-
-
             Question question = planetCaracteristics.GetNextQuestion();
 
             if (question is null)
@@ -70,10 +66,6 @@ public class QuestionForm : MonoBehaviour
         }
         catch (Exception e )
         {
-            Debug.Log("Finished this");
-            Debug.Log(e.Message);
-            Debug.Log(planetCaracteristics.ActualQuestionIndex);
-
             FailQuestion();
         }
         

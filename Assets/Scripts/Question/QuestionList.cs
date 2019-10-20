@@ -10,7 +10,6 @@ public class QuestionList : MonoBehaviour
     {
         if (NumberOfQuestions > AllQuestions.Count)
         {
-            Debug.Log($"Number of questions asked {NumberOfQuestions} is bigger than the number of questions we have {AllQuestions.Count}");
             return null;
         }
 
