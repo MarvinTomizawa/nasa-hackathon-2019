@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FirstOption
+  - SecondOption
+  - ThirdOption
+  - FourthOption
+  - QuestionText
+  - Planet
   layers:
   - Default
   - TransparentFX
