@@ -35,7 +35,6 @@ public class Caracteristics : MonoBehaviour
     public void MissQuestion()
     {
         ActualQuestionIndex += 1;
-        Debug.LogError(NumberOfWrongs);
         NumberOfWrongs += 1;
         if (NumberOfWrongs > 2)
         {
@@ -79,7 +78,6 @@ public class Caracteristics : MonoBehaviour
 
     public void RevivePlanet()
     {
-        Debug.LogError("Aqui");
         Answered = true;
         brokenImage.SetActive(false);
         normalImage.SetActive(true);
