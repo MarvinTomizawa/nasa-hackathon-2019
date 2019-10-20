@@ -92,6 +92,7 @@ public class Caracteristics : MonoBehaviour
     public void RevivePlanet()
     {
         Answered = true;
+        FindObjectOfType<SunFases>().NextFase();
         brokenImage.SetActive(false);
         normalImage.SetActive(true);
     }

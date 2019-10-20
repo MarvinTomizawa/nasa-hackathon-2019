@@ -20,6 +20,9 @@ public class QuestionForm : MonoBehaviour
     [SerializeField]
     public GameObject[] planets = new GameObject[8];
 
+    [SerializeField]
+    private SunFases SunFases;
+
     private int PlanetIndex = 0;
 
     private void Start()
@@ -45,7 +48,7 @@ public class QuestionForm : MonoBehaviour
 
         if (question is null)
         {
-            
+            CompleteQuestion();
         }
         else
         {
@@ -88,6 +91,7 @@ public class QuestionForm : MonoBehaviour
     {
         planetCaracteristics.RevivePlanet();
         form.SetActive(false);
+        SunFases.NextFase();
         player.LetMove();
 
     }
