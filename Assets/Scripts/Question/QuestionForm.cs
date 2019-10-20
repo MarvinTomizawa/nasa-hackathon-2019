@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestionForm : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class QuestionForm : MonoBehaviour
 
     private PLayerMovement player;
 
+    [SerializeField]
+    public Text PlanetName;
+
+    [SerializeField]
+    public GameObject[] planets = new GameObject[8];
+
+    private int PlanetIndex = 0;
+
     private void Start()
     {
         player = FindObjectOfType<PLayerMovement>();
@@ -21,6 +30,10 @@ public class QuestionForm : MonoBehaviour
 
     public void StartQuestionnaire(Caracteristics caracteristics)
     {
+        planets[PlanetIndex].SetActive(false);
+        PlanetName.text = caracteristics.GetPlanet();
+        PlanetIndex = caracteristics.GetIndex();
+        planets[PlanetIndex - 1].SetActive(true);
         this.planetCaracteristics = caracteristics;
         StartQuestion(caracteristics.GetNextQuestion());
     }

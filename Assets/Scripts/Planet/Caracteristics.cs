@@ -1,9 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Caracteristics : MonoBehaviour
 {
     public bool Answered;
+
+    [SerializeField]
+    private string PlanetName;
+
+    [SerializeField]
+    [Range(1,8)]
+    private int PlanetIndex;
 
     [SerializeField]
     private GameObject brokenImage;
@@ -35,7 +43,6 @@ public class Caracteristics : MonoBehaviour
     public void MissQuestion()
     {
         ActualQuestionIndex += 1;
-        Debug.LogError(NumberOfWrongs);
         NumberOfWrongs += 1;
         if (NumberOfWrongs > 2)
         {
@@ -43,6 +50,11 @@ public class Caracteristics : MonoBehaviour
         }
         validate();
 
+    }
+
+    internal int GetIndex()
+    {
+        return PlanetIndex;
     }
 
     public void GetQuestionRight()
@@ -82,6 +94,16 @@ public class Caracteristics : MonoBehaviour
         Answered = true;
         brokenImage.SetActive(false);
         normalImage.SetActive(true);
+    }
+
+    public string GetPlanet()
+    {
+        return PlanetName;
+    }
+
+    public GameObject GetProjectImage()
+    {
+        return brokenImage;
     }
 
 }
