@@ -10,6 +10,9 @@ public class QuestionController : MonoBehaviour
     [SerializeField]
     private QuestionForm form;
 
+    [SerializeField]
+    private Sinalizer sinalizer;
+
     private void Start()
     {
         messageFeedback = GetComponent<MessageFeedback>();
@@ -38,6 +41,7 @@ public class QuestionController : MonoBehaviour
         if (!visitedPlanet.Answered)
         {
             visitedPlanet.ResetQuestionnaire();
+            sinalizer.ResetAll();
             form.StartQuestionnaire(visitedPlanet);
         }
     }

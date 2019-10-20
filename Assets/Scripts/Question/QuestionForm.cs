@@ -41,6 +41,10 @@ public class QuestionForm : MonoBehaviour
         StartQuestion(caracteristics.GetNextQuestion());
     }
 
+    public void DisableActualSelectedPlanet()
+    {
+    }
+
     public void StartQuestion(Question question)
     {
         player.StopMovement();
@@ -98,6 +102,10 @@ public class QuestionForm : MonoBehaviour
 
     public void FailQuestion()
     {
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(false);
+        }
         form.SetActive(false);
         player.LetMove();
     }

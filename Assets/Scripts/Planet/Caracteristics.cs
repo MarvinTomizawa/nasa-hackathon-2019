@@ -31,6 +31,8 @@ public class Caracteristics : MonoBehaviour
     [SerializeField]
     private QuestionList AllQuestions;
 
+    private Sinalizer sinalizer;
+
     public int ActualQuestionIndex = 0;
 
     private List<Question> chosedQuestions;
@@ -38,10 +40,12 @@ public class Caracteristics : MonoBehaviour
     public void Start()
     {
         Answered = false;
+        sinalizer = GameObject.FindGameObjectWithTag("Sinalizer").GetComponent<Sinalizer> ();
     }
 
     public void MissQuestion()
     {
+        sinalizer.SetWrong();
         ActualQuestionIndex += 1;
         NumberOfWrongs += 1;
         if (NumberOfWrongs > 2)
@@ -59,6 +63,7 @@ public class Caracteristics : MonoBehaviour
 
     public void GetQuestionRight()
     {
+        sinalizer.SetRight();
         ActualQuestionIndex += 1;
         NumberOfRights += 1;
         validate();
