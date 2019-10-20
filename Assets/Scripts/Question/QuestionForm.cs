@@ -27,16 +27,17 @@ public class QuestionForm : MonoBehaviour
 
     public void StartQuestion(Question question)
     {
+        Debug.LogError("Oi");
         player.StopMovement();
         form.SetActive(true);
 
-        this.question = question;
         if (question is null)
         {
-            CompleteQuestion();
+            
         }
         else
         {
+            this.question = question;
             question.AllocateFields();
         }
     }
@@ -45,11 +46,9 @@ public class QuestionForm : MonoBehaviour
     {
         try
         {
-            if (question.ValidateIfRight(index))
+            if (this.question.ValidateIfRight(index))
             {
-                Debug.LogError("jasbdajsbdajsbhd");
                 planetCaracteristics.GetQuestionRight();
-                Debug.LogError("jasbdajsbdajsbhd");
 
             }
             else
@@ -57,10 +56,24 @@ public class QuestionForm : MonoBehaviour
                 planetCaracteristics.MissQuestion();
             }
 
-            StartQuestion(planetCaracteristics.GetNextQuestion());
+            Debug.Log(index);
+
+
+            Question question = planetCaracteristics.GetNextQuestion();
+
+            if (question is null)
+            {
+                CompleteQuestion();
+            }
+
+            StartQuestion(question);
         }
-        catch (Exception)
+        catch (Exception e )
         {
+            Debug.Log("Finished this");
+            Debug.Log(e.Message);
+            Debug.Log(planetCaracteristics.ActualQuestionIndex);
+
             FailQuestion();
         }
         
@@ -68,6 +81,7 @@ public class QuestionForm : MonoBehaviour
 
     public void CompleteQuestion()
     {
+        planetCaracteristics.RevivePlanet();
         form.SetActive(false);
         player.LetMove();
 

@@ -11,7 +11,7 @@ public class Question : MonoBehaviour
     [SerializeField]
     public string text;
 
-    public Text textField;
+    private Text textField;
 
     public void AllocateFields()
     {

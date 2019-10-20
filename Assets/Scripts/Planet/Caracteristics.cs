@@ -6,6 +6,12 @@ public class Caracteristics : MonoBehaviour
     public bool Answered;
 
     [SerializeField]
+    private GameObject brokenImage;
+
+    [SerializeField]
+    private GameObject normalImage;
+
+    [SerializeField]
     public int NumberOfWrongs = 0;
 
     [SerializeField]
@@ -17,7 +23,7 @@ public class Caracteristics : MonoBehaviour
     [SerializeField]
     private QuestionList AllQuestions;
 
-    private int ActualQuestionIndex = 0;
+    public int ActualQuestionIndex = 0;
 
     private List<Question> chosedQuestions;
 
@@ -35,14 +41,25 @@ public class Caracteristics : MonoBehaviour
         {
             throw new System.Exception();
         }
+        validate();
+
     }
 
     public void GetQuestionRight()
     {
         ActualQuestionIndex += 1;
         NumberOfRights += 1;
+        validate();
+
     }
 
+    public void validate()
+    {
+        if (NumberOfRights + NumberOfWrongs == MaxNumberOfQuestions && NumberOfRights > NumberOfWrongs)
+        {
+            RevivePlanet();
+        }
+    }
     public void ResetQuestionnaire()
     {
         NumberOfRights = 0;
@@ -58,6 +75,14 @@ public class Caracteristics : MonoBehaviour
             return null;
         }
         return chosedQuestions[ActualQuestionIndex];
+    }
+
+    public void RevivePlanet()
+    {
+        Debug.LogError("Aqui");
+        Answered = true;
+        brokenImage.SetActive(false);
+        normalImage.SetActive(true);
     }
 
 }
