@@ -35,7 +35,10 @@ public class QuestionController : MonoBehaviour
 
     private void StartQuestionnaire()
     {
-        visitedPlanet.ResetQuestionnaire();
-        form.StartQuestionnaire(visitedPlanet);
+        if (!visitedPlanet.Answered)
+        {
+            visitedPlanet.ResetQuestionnaire();
+            form.StartQuestionnaire(visitedPlanet);
+        }
     }
 }

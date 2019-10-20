@@ -35,6 +35,7 @@ public class Caracteristics : MonoBehaviour
     public void MissQuestion()
     {
         ActualQuestionIndex += 1;
+        Debug.LogError(NumberOfWrongs);
         NumberOfWrongs += 1;
         if (NumberOfWrongs > 2)
         {
