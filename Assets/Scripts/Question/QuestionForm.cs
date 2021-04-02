@@ -33,7 +33,10 @@ public class QuestionForm : MonoBehaviour
 
     public void StartQuestionnaire(Caracteristics caracteristics)
     {
-        planets[PlanetIndex].SetActive(false);
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(false);
+        }
         PlanetName.text = caracteristics.GetPlanet();
         PlanetIndex = caracteristics.GetIndex();
         planets[PlanetIndex - 1].SetActive(true);
@@ -84,7 +87,7 @@ public class QuestionForm : MonoBehaviour
 
             StartQuestion(question);
         }
-        catch (Exception e )
+        catch (Exception)
         {
             FailQuestion();
         }
